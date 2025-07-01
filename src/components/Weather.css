@@ -35,3 +35,57 @@
     
 }
 
+.weather-icon{
+    width: 200px;
+    margin: 30px;
+}
+
+.temperature-content{
+    display: flex;
+}
+
+.temperature{
+    font-size: 50px;
+    font-weight: 700;
+    color: #333;
+}
+
+.temperature-icon{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.location{
+    font-size: 30px;
+    color: #666;
+}
+
+.weather-data{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-data .col{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 22px;
+}
+
+.weather-data .col span{
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.humidity-icon, .wind-speed-icon{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+
+
