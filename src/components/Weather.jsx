@@ -1,4 +1,6 @@
 import React from 'react'
+import search from '../api'
+import { useState, useEffect } from 'react'
 import './Weather.css'
 import search_icon from '../assets/search.png'
 import cloudy_rain_sun_icon from '../assets/cloudy-rain-sun.png'
@@ -13,6 +15,32 @@ import humidity_icon from '../assets/humidity.png'
 
 
 const Weather = () => {
+
+    const [weatherData, setWeatherData] = useState(null);
+    const weatherIcons = {
+        "01d": sun_icon,
+        "01n": cloudy_rain_sun_icon,
+        "02d": rain_icon,
+        "02n": snow_icon,
+        "03d": storm_icon,
+        "03n": wind_icon}
+
+    useEffect(() => {
+    const fetchWeather = async () => {
+      const data = await search("London");
+      const icon = data.weather[0].icon || "01d"; // Default to sunny icon if no icon is provided
+      setWeatherData({
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+        temperature: Math.round(data.main.temp),
+        location: data.name,
+        icon: icon
+      });
+    };
+
+    fetchWeather();
+  }, []);
+
   return (
     
        <div className="weather">
@@ -21,20 +49,23 @@ const Weather = () => {
                 <img src={search_icon} alt="search-icon" className='search-icon'/>
             </div>
 
-            <img src={sun_icon} className='weather-icon'></img>
+            {weatherData ? (
+                <>
+
+            <img src={weatherIcons[weatherData.icon] || sun_icon} className='weather-icon'></img>
 
             <div className='temperature-content'>
-                <p className='temperature'>16°c</p> 
+                <p className='temperature'>{weatherData.temperature}°c</p> 
                 <img src={temperature_icon} className='temperature-icon'></img>
             </div>
 
-            <p className='location'>London</p>
+            <p className='location'>{weatherData.location}</p>
 
             <div className='weather-data'>
                 <div className='col'>
                     <img src = {humidity_icon} className='humidity-icon' alt='humidity-icon'></img>
                     <div>
-                        <p>91%</p>
+                        <p>{weatherData.humidity}%</p>
                         <span>Humidity</span>
                     </div>
                 </div>
@@ -42,14 +73,19 @@ const Weather = () => {
                 <div className='col'>
                     <img src={wind_icon} className='wind-speed-icon' alt='wind-speed-icon'></img>
                     <div>
-                        <p>36 km/h</p>
+                        <p>{weatherData.windSpeed} km/h</p>
                         <span>wind speed</span>
                     </div>
                 </div>
             </div>
+
+             </>
+    ) : (
+      <p>Loading...</p>
+    )}
         </div>
     
   )
-}
+};
 
 export default Weather

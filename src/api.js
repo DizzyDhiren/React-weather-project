@@ -1,6 +1,11 @@
+import React from 'react';
+import { useState } from 'react';
+
 //api for weater app
 const API_KEY = '0ca8b02eb16b7b3e0d9eae4b8dfd4792';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
+
+// Function to search for weather data by city name
 
 
 
@@ -12,8 +17,15 @@ const search = async (city) => {
     const data = await response.json();
     console.log(data);
 
+   if (data.cod !== 200) {
+      console.error("API error:", data.message);
+      return null;
+    }
+
+    return data;
   } catch (error) {
-    console.error("Error fetching weather data:", error);
+    console.error("Network error:", error);
+    return null;
   }
 };
 
