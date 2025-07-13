@@ -59,8 +59,16 @@ const Weather = () => {
     
        <div className="weather">
             <div className='search-bar'>
-                <input ref={inputRef} type="text" placeholder="Search for a city..." />
-                <img src={search_icon} alt="search-icon" className='search-icon' onClick={() => handleSearch(inputRef.current.value)}/>
+                <input ref={inputRef} type="text" 
+                placeholder="Search for a city..."
+                onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                        handleSearch(inputRef.current.value);
+                        }
+                    }} 
+                />
+                <img src={search_icon} alt="search-icon" className='search-icon' onClick={() => handleSearch(inputRef.current.value)}
+                />
             </div>
 
             {weatherData ? (
