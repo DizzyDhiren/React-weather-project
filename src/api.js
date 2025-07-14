@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 //api for weater app
-const API_KEY = '0ca8b02eb16b7b3e0d9eae4b8dfd4792';
+const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 // Function to search for weather data by city name
