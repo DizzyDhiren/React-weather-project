@@ -11,7 +11,7 @@ I hope you enjoy checking it out, and I’m excited to keep learning and improvi
 
 Here's a preview of the app in action:
 <p align="center">
-  <img src="public/Weather appSS.png" alt="Weather App Screenshot" width="600"/>
+  <img src="public/WeatherAppSS.png" alt="Weather App Screenshot" width="600"/>
 </p>
 
 ### 📚 What I Learned
