@@ -9,6 +9,11 @@ This app takes user input for a city and returns weather details like temperatur
 
 I hope you enjoy checking it out, and I’m excited to keep learning and improving as I build my next project!
 
+Here's a preview of the app in action:
+<p align="center">
+  <img src="public/Weather appSS.png" alt="Weather App Screenshot" width="600"/>
+</p>
+
 ### 📚 What I Learned
 
 - Fundamentals of **React** (components, props, state)
